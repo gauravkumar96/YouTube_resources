@@ -1,0 +1,29 @@
+
+Function d_1(S, K, r, Vol, T)
+
+    d_1 = (Log(S / K) + T * (r + (Vol * Vol) / 2)) / (Vol * Sqr(T))
+
+End Function
+
+Function d_2(S, K, r, Vol, T)
+   
+    d_2 = d_1(S, K, r, Vol, T) - Vol * Sqr(T)
+
+End Function
+
+Function CallPrice(S, K, r, Vol, T)
+d1 = d_1(S, K, r, Vol, T)
+d2 = d_2(S, K, r, Vol, T)
+
+CallPrice = S * WorksheetFunction.Norm_S_Dist(d1, True) - (K * Exp(-r * T) * WorksheetFunction.Norm_S_Dist(d2, True))
+
+End Function
+
+
+Function PutPrice(S, K, r, Vol, T)
+d1 = d_1(S, K, r, Vol, T)
+d2 = d_2(S, K, r, Vol, T)
+
+PutPrice = (K * Exp(-r * T) * WorksheetFunction.Norm_S_Dist(-d2, True)) - S * WorksheetFunction.Norm_S_Dist(-d1, True)
+
+End Function
