@@ -1,0 +1,22 @@
+
+Function CallDelta(S, K, r, Vol, T)
+
+d1 = d_1(S, K, r, Vol, T)
+CallDelta = WorksheetFunction.Norm_S_Dist(d1, True)
+
+End Function
+
+
+Function PutDelta(S, K, r, Vol, T)
+
+d1 = d_1(S, K, r, Vol, T) - 1
+PutDelta = WorksheetFunction.Norm_S_Dist(d1, True) - 1
+
+End Function
+
+Function Gamma(S, K, r, Vol, T)
+
+d1 = d_1(S, K, r, Vol, T)
+Gamma = Exp(-1 * d1 * d1 / 2) / (S * Vol * Sqr(2 * Application.WorksheetFunction.Pi() * T))
+
+End Function
