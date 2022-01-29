@@ -1,0 +1,13 @@
+Function Calltheta(S, K, r, Vol, T, T_total)
+d2 = d_2(S, K, r, Vol, T)
+d1 = d_1(S, K, r, Vol, T)
+Calltheta = (1 / T_total) * ((-1 * S * Vol * Exp(-d1 * d1 / 2) / 2 * Sqr(2 * T * Application.WorksheetFunction.Pi())) - (r * Exp(-r * T) * WorksheetFunction.Norm_S_Dist(-d2, True)))
+
+End Function
+
+Function Puttheta(S, K, r, Vol, T, T_total)
+d2 = d_2(S, K, r, Vol, T)
+d1 = d_1(S, K, r, Vol, T)
+Puttheta = (1 / T_total) * ((-1 * S * Vol * Exp(-d1 * d1 / 2) / 2 * Sqr(2 * T * Application.WorksheetFunction.Pi())) - (r * Exp(-r * T) * WorksheetFunction.Norm_S_Dist(-d2, True)))
+
+End Function
